@@ -1,15 +1,7 @@
-//Puerto para el servidor
-const serverPort = async () => {
-  const port = await fetch("e-store.up.railway.app");
-  const result = await port.json();
-  localStorage.setItem("port", result.port);
-};
-const PORT = localStorage.getItem("port");
-
 // Última conexión
 const lastConnection = async (username) => {
   const response = await fetch(
-    `http://localhost:${PORT}/api/sessions/lastConnection`,
+    "https://e-store.up.railway.app/api/sessions/lastConnection",
     {
       method: "PUT",
       headers: {
@@ -36,7 +28,7 @@ const createCart = async () => {
     if (localStorage.getItem("cartId")) {
       return;
     }
-    const response = await fetch(`http://localhost:${PORT}/api/carts`, {
+    const response = await fetch("https://e-store.up.railway.app/api/carts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,13 +47,16 @@ const createCart = async () => {
 // Función que captura la información del usuario y la almacena en el local storage
 const getUser = async () => {
   try {
-    const response = await fetch(`http://localhost:${PORT}/api/users/current`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      "https://e-store.up.railway.app/api/users/current",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
     const result = await response.json();
     const role = result.data.role;
@@ -70,7 +65,8 @@ const getUser = async () => {
     }
 
     const url = role === "admin" ? "realTimeProducts.html" : "products.html";
-    window.location.href = `http://127.0.0.1:${localPort}/html/${url}`;
+    window.location.href =
+      "https://leotricotti.github.io/front-end/html/products.html";
 
     return result;
   } catch (error) {
@@ -94,7 +90,7 @@ loginForm.addEventListener("submit", (event) => {
 const postLogin = async (username, password) => {
   try {
     const response = await fetch(
-      `http://localhost:${PORT}/api/sessions/login`,
+      "https://e-store.up.railway.app/api/sessions/login",
       {
         method: "POST",
         headers: {
@@ -134,7 +130,7 @@ const postLogin = async (username, password) => {
 
 // Login con GitHub
 const githubLogin = async () => {
-  window.location.href = `http://localhost:${PORT}/api/sessions/github`;
+  window.location.href = "https://e-store.up.railway.app/api/sessions/github";
 };
 
 // Spinner de carga
