@@ -16,12 +16,6 @@ const lastConnection = async (username) => {
   );
 };
 
-addEventListener("load", serverPort());
-
-// Local Port
-let localPort = window.location.port;
-localStorage.setItem("localPort", localPort);
-
 // Crea un carrito vacío en la base de datos
 const createCart = async () => {
   try {
@@ -64,11 +58,14 @@ const getUser = async () => {
       localStorage.setItem("user", JSON.stringify(result.data));
     }
 
-    const url = role === "admin" ? "realTimeProducts.html" : "products.html";
-    window.location.href =
-      "https://leotricotti.github.io/front-end/html/products.html";
-
-    return result;
+    if (
+      role === "admin"
+        ? (window.location.href =
+            "https://leotricotti.github.io/front-end/html/realTimeProducts.html")
+        : (window.location.href =
+            "https://leotricotti.github.io/front-end/html/products.html")
+    )
+      return result;
   } catch (error) {
     console.log(error);
   }
