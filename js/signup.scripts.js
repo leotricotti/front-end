@@ -7,14 +7,17 @@ async function postSignup(first_name, last_name, username, password) {
     password,
   };
 
-  const response = await fetch(`http://localhost:8080/api/sessions/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    "https://e-store.up.railway.app/api/sessions/signup",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   const result = await response.json();
 
@@ -44,7 +47,7 @@ async function postSignup(first_name, last_name, username, password) {
         popup: "animate__animated animate__zoomOut",
       },
     }).then(() => {
-      window.location.href = "../html/index.html";
+      window.location.href = "https://leotricotti.github.io/front-end/";
     });
     return true;
   }
