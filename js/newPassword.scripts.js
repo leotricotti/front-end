@@ -1,7 +1,4 @@
-// Constantes que capturan los elementos del DOM
-const newPassword = document.getElementById("password");
-const repitPassword = document.getElementById("repit-password");
-
+// Funcion que actualiza la contraseña del usuario
 const updatePassword = async (newPasswordData, repitPasswordData, token) => {
   const PORT = localStorage.getItem("port");
   const localPort = localStorage.getItem("localPort");
@@ -89,29 +86,33 @@ const updatePassword = async (newPasswordData, repitPasswordData, token) => {
   }
 };
 
-addEventListener("submit", (e) => {
-  e.preventDefault();
-  const token = new URLSearchParams(window.location.search).get("token");
-  updatePassword(newPassword.value, repitPassword.value, token);
+document.addEventListener("DOMContentLoaded", () => {
+  // Constantes que capturan los elementos del DOM
+  const newPassword = document.getElementById("password");
+  const repitPassword = document.getElementById("repit-password");
+  addEventListener("submit", (e) => {
+    e.preventDefault();
+    const token = new URLSearchParams(window.location.search).get("token");
+    updatePassword(newPassword.value, repitPassword.value, token);
+  });
 });
 
-// Constantes que capturan los elementos del DOM
-const repitEyeOpen = document.getElementById("repit-eye-open");
-const repitEyeClose = document.getElementById("repit-eye-close");
-const repitEyeContainer = document.getElementById("repit-eye-container");
-
-// Función que agrega un evento de click al botón de mostrar/ocultar contraseña
-repitEyeContainer.addEventListener("click", () => {
-  repitEyeOpen.classList.toggle("show-password");
-  repitEyeClose.classList.toggle("show-password");
-  showNewPassword();
+document.addEventListener("DOMContentLoaded", () => {
+  // Constantes que capturan los elementos del DOM
+  const repitEyeOpen = document.getElementById("repit-eye-open");
+  const repitEyeClose = document.getElementById("repit-eye-close");
+  const repitEyeContainer = document.getElementById("repit-eye-container");
+  // Función que agrega un evento de click al botón de mostrar/ocultar contraseña
+  repitEyeContainer.addEventListener("click", () => {
+    repitEyeOpen.classList.toggle("show-password");
+    repitEyeClose.classList.toggle("show-password");
+    showNewPassword();
+  });
 });
 
-// Función que muestra/oculta la contraseña
 const showNewPassword = () => {
+  const repitPassword = document.getElementById("repit-password");
   repitPassword.type = repitEyeOpen.classList.contains("show-password")
     ? "text"
     : "password";
 };
-
-const updatePasswordBtn = document.getElementById("update-password-button");

@@ -1,11 +1,7 @@
-// Local Port
-let localPort = window.location.port;
-localStorage.setItem("localPort", localPort);
-
 // Última conexión
 const lastConnection = async (username) => {
   const response = await fetch(
-    `http://localhost:8080/api/sessions/lastConnection`,
+    "https://e-store.up.railway.app/api/sessions/lastConnection",
     {
       method: "PUT",
       headers: {
@@ -26,7 +22,7 @@ const createCart = async () => {
     if (localStorage.getItem("cartId")) {
       return;
     }
-    const response = await fetch(`http://localhost:8080/api/carts`, {
+    const response = await fetch("https://e-store.up.railway.app/api/carts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,13 +41,16 @@ const createCart = async () => {
 // Función que captura la información del usuario y la almacena en el local storage
 const getUser = async () => {
   try {
-    const response = await fetch(`http://localhost:8080/api/users/current`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      "https://e-store.up.railway.app/api/users/current",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
     const result = await response.json();
     const role = result.data.role;
@@ -61,7 +60,7 @@ const getUser = async () => {
     }
 
     const url = role === "admin" ? "realTimeProducts.html" : "products.html";
-    window.location.href = `http://127.0.0.1:${localPort}/html/${url}`;
+    window.location.href = "https://e-store.up.railway.app/html/${url}";
 
     return result;
   } catch (error) {

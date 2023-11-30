@@ -11,7 +11,7 @@ const productsHandler = async (handler, index) => {
   if (!index) index = 1;
 
   const result = await fetch(
-    `http://localhost:${PORT}/api/products?${handler}=${index}`,
+    `https://e-store.up.railway.app/api/products?${handler}=${index}`,
     {
       method: "GET",
       headers: {
@@ -130,7 +130,7 @@ const saveCartId = (cartId) => {
 //Obtener carrito
 const getCartId = async () => {
   try {
-    const response = await fetch(`http://localhost:${PORT}/api/carts`, {
+    const response = await fetch("https://e-store.up.railway.app/api/carts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -161,17 +161,20 @@ const addCartId = async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       cartId = localStorage.getItem("cartId");
     }
-    const response = await fetch(`http://localhost:${PORT}/api/users/cart`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({
-        cartId,
-        email,
-      }),
-    });
+    const response = await fetch(
+      "https://e-store.up.railway.app/api/users/cart",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          cartId,
+          email,
+        }),
+      }
+    );
   });
 };
 
@@ -182,7 +185,7 @@ const addProduct = async (idProduct) => {
   const cartId = localStorage.getItem("cartId");
   try {
     const response = await fetch(
-      `http://localhost:${PORT}/api/carts/${cartId}/product/${idProduct}`,
+      `https://e-store.up.railway.app/api/carts/${cartId}/product/${idProduct}`,
       {
         method: "POST",
         headers: {
@@ -232,14 +235,12 @@ chatClose.addEventListener("click", () => {
   chatContainer.classList.remove("active");
 });
 
-const localPort = localStorage.getItem("localPort");
-
 // Redirecciona a la página de carritos
 const goToCart = () => {
-  window.location.href = `http://127.0.0.1:${localPort}/html/cart.html`;
+  window.location.href = "https://e-store.up.railway.app/html/cart.html";
 };
 
 // Redirecciona a la página de productos
 const goToProducts = () => {
-  window.location.href = `http://127.0.0.1:${localPort}/html/products.html`;
+  window.location.href = "https://e-store.up.railway.app/html/products.html";
 };

@@ -22,7 +22,7 @@ const showDetailedInfo = async (id) => {
 
   try {
     const response = await fetch(
-      `http://localhost:${PORT}/api/products/${id}`,
+      `https://e-store.up.railway.app/api/products/${id}`,
       {
         method: "GET",
         headers: {

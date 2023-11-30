@@ -7,13 +7,16 @@ const getUser = async () => {
   const token = localStorage.getItem("token");
   const PORT = localStorage.getItem("port");
   try {
-    const response = await fetch(`http://localhost:${PORT}/api/users/current`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://e-store.up.railway.app/api/users/current",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     const result = await response.json();
 
@@ -42,7 +45,7 @@ const addUserProfileImage = async (userProfileImage) => {
   formData.append("userProfileImage", userProfileImage);
 
   const response = await fetch(
-    `http://localhost:${PORT}/api/users/${userId}/documents`,
+    `https://e-store.up.railway.app/api/users/${userId}/documents`,
     {
       method: "POST",
       headers: {

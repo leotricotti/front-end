@@ -1,8 +1,10 @@
 // Variables globales
-let page = 1;
-let counter = 0;
-let fileCounter = 0;
-const formData = new FormData();
+document.addEventListener("DOMContentLoaded", () => {
+  let page = 1;
+  let counter = 0;
+  let fileCounter = 0;
+  const formData = new FormData();
+});
 
 // Codigo que desabilita el chat para los administradores
 document.addEventListener("DOMContentLoaded", () => {
@@ -138,7 +140,7 @@ async function handleUpdateProduct(
     };
 
     const response = await fetch(
-      `http://localhost:${PORT}/api/realTimeProducts/${id}`,
+      `https://e-store.up.railway.app/api/realTimeProducts/${id}`,
       {
         method: "PUT",
         headers: {
@@ -199,7 +201,7 @@ const getProductToUpdate = async (id) => {
   const PORT = localStorage.getItem("port");
 
   const response = await fetch(
-    `http://localhost:${PORT}/api/realTimeProducts/${id}`,
+    `"https://e-store.up.railway.app/api/realTimeProducts/${id}`,
     {
       method: "GET",
       headers: {
@@ -346,7 +348,7 @@ async function handleSubmit(e) {
     };
     formData.append("newProduct", JSON.stringify(product));
     const response = await fetch(
-      `http://localhost:${PORT}/api/realTimeProducts`,
+      "https://e-store.up.railway.app/api/realTimeProducts",
       {
         method: "POST",
         headers: {
@@ -395,10 +397,9 @@ async function handleSubmit(e) {
 }
 
 const getProducts = async (page) => {
-  const PORT = localStorage.getItem("port");
   try {
     const result = await fetch(
-      `http://localhost:${PORT}/api/realTimeProducts`,
+      "https://e-store.up.railway.app/api/realTimeProducts",
       {
         method: "GET",
         headers: {
@@ -462,7 +463,7 @@ const renderProductImage = (product) => {
     return `<img src="${imageUrl}" alt="img" width="150" class="thumbnail position-absolute me-5 end-0 top-0" style="margin-top:120px">`;
   } else {
     const finalUrl = product.thumbnail[0]?.img1.split("public");
-    return `<img src="http://localhost:${PORT}${finalUrl[1]}" alt="img" width="150" class="thumbnail position-absolute me-5 end-0 top-0" style="margin-top:120px">`;
+    return `<img src=""https://e-store.up.railway.app${finalUrl[1]}" alt="img" width="150" class="thumbnail position-absolute me-5 end-0 top-0" style="margin-top:120px">`;
   }
 };
 
@@ -546,7 +547,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Eliminar un producto de la lista de productos
 function eliminarProducto(id) {
-  const PORT = localStorage.getItem("port");
   Swal.fire({
     title: "¿Estás seguro?",
     text: "No podrás revertir esta acción!",
@@ -562,7 +562,7 @@ function eliminarProducto(id) {
   }).then(async (result) => {
     if (result.isConfirmed) {
       const response = await fetch(
-        `http://localhost:${PORT}/api/realTimeProducts/${id}`,
+        `https://e-store.up.railway.app/api/realTimeProducts/${id}`,
         {
           method: "DELETE",
           headers: {

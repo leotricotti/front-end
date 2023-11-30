@@ -4,7 +4,7 @@ const lastConnection = async () => {
   const username = user.email;
 
   const response = await fetch(
-    `http://localhost:${PORT}/api/sessions/lastConnection`,
+    "https://e-store.up.railway.app}/api/sessions/lastConnection",
     {
       method: "PUT",
       headers: {
@@ -21,9 +21,6 @@ const lastConnection = async () => {
 
 //Cerrar sesión
 const logout = () => {
-  // Puerto local
-  const localPort = localStorage.getItem("localPort");
-
   Swal.fire({
     title: "¿Estás seguro que deseas cerrar sesión?",
     showDenyButton: true,
@@ -56,7 +53,7 @@ const logout = () => {
         localStorage.removeItem("user");
         localStorage.setItem("currentPage", 1);
         localStorage.removeItem("usersDeleted");
-        window.location.href = `http://127.0.0.1:${localPort}/html/index.html`;
+        window.location.href = "https://e-store.up.railway.app/index.html";
       }, 2000);
     }
   });
