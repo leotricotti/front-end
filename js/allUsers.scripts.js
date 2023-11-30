@@ -1,20 +1,14 @@
-//Variables globales
-const usersProfile = [];
-const profileContainer = document.getElementById("profile-container");
-const token = localStorage.getItem("token");
-const PORT = localStorage.getItem("port");
-const localPort = localStorage.getItem("localPort");
-const prevUsersQuantity = usersProfile.length;
-let usersDeleted = localStorage.getItem("usersDeleted") || 0;
-
+// Capitalizar la primera letra de una palabra
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
 // Función que captura la información del usuario y la almacena en el local storage
 const getAllUsers = async () => {
+  const token = localStorage.getItem("token");
+  const usersProfile = [];
   try {
-    const response = await fetch(`http://localhost:${PORT}/api/users`, {
+    const response = await fetch("https://e-store.up.railway.app/api/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +33,7 @@ const getAllUsers = async () => {
       });
     } else {
       showSpinner(usersProfile);
-      renderAllUsersProfile();
+      renderAllUsersProfile(usersProfile);
     }
 
     return result;
@@ -49,7 +43,9 @@ const getAllUsers = async () => {
 };
 
 // Función que renderiza el perfil del usuario
-function renderAllUsersProfile() {
+function renderAllUsersProfile(usersProfile) {
+  const profileContainer = document.getElementById("profile-container");
+  const usersDeleted = localStorage.getItem("usersDeleted") || 0;
   let html = "";
   html += `
   <div class="row container w-50 d-flex justify-content-around">
@@ -181,10 +177,9 @@ async function updateUserRole(userId, userRole) {
 
 const sendNewRoleToServer = async (userId, newRoleData) => {
   const token = localStorage.getItem("token");
-  const PORT = localStorage.getItem("port");
 
   const response = await fetch(
-    `http://localhost:${PORT}/api/users/premium/${userId}`,
+    "https://e-store.up.railway.app/api/users/premium/${userId}",
     {
       method: "PUT",
       headers: {
@@ -235,10 +230,9 @@ const sendNewRoleToServer = async (userId, newRoleData) => {
 // Función que elimina un usuario
 const userToDelete = async (userId) => {
   const token = localStorage.getItem("token");
-  const PORT = localStorage.getItem("port");
 
   const response = await fetch(
-    `http://localhost:${PORT}/api/users/userDelete/${userId}`,
+    "https://e-store.up.railway.app/api/users/userDelete/${userId}",
     {
       method: "DELETE",
       headers: {
@@ -249,7 +243,7 @@ const userToDelete = async (userId) => {
   );
 
   const result = await response.json();
-  showSpinner(usersProfile);
+  showSpinner(result);
 
   if (!result.message === "Usuario eliminado con exito.") {
     Swal.fire({
@@ -334,10 +328,9 @@ const deleteUnConnectedUsers = () => {
 // Función que elimina los usuarios desconectados
 const deleteUsers = async () => {
   const token = localStorage.getItem("token");
-  const PORT = localStorage.getItem("port");
 
   const response = await fetch(
-    `http://localhost:${PORT}/api/users/deleteUnconnectedUsers`,
+    "https://e-store.up.railway.app/api/users/deleteUnconnectedUsers",
     {
       method: "DELETE",
       headers: {
@@ -386,10 +379,7 @@ const deleteUsers = async () => {
   }
 };
 
-const newQuantity = usersProfile.length;
-const deletedUsers = prevUsersQuantity - newQuantity;
-
 // Función que redirige al usuario a la página de productos
 const goToProducts = () => {
-  window.location.href = `http://127.0.0.1:${localPort}/html/products.html`;
+  window.location.href = "https://e-store.up.railway.app/html/products.html";
 };
