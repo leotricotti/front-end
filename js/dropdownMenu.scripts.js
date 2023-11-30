@@ -1,30 +1,28 @@
-//Capturar elementos del DOM
-const dropdownMenu = document.getElementById("dropdown-menu");
-
-// Capturar el rol del usuario
-const userData = JSON.parse(localStorage.getItem("user"));
-let userRoleData = userData.role;
-
 // Función que redirige al perfil del usuario
 const goToUserProfile = () => {
-  const localPort = localStorage.getItem("localPort");
-  window.location.href = `http://127.0.0.1:${localPort}/html/userProfile.html`;
+  window.location.href = "https://e-store.up.railway.app/html/userProfile.html";
 };
 
 // Función que redirige al perfil de todos los usuarios
 const goToAllUsersProfile = () => {
-  const localPort = localStorage.getItem("localPort");
-  window.location.href = `http://127.0.0.1:${localPort}/html/allUsers.html`;
+  window.location.href = "https://e-store.up.railway.app/html/allUsers.html";
 };
 
 // Función que redirige a la documentación de la API
 const gotToRealTimeProducts = () => {
-  const localPort = localStorage.getItem("localPort");
-  window.location.href = `http://127.0.0.1:${localPort}/html/realTimeProducts.html`;
+  window.location.href =
+    "https://e-store.up.railway.app/html/realTimeProducts.html";
 };
 
 // Función para renderizar el botón de cambio de rol
 const renderDropdownMenu = () => {
+  //Capturar elementos del DOM
+  const dropdownMenu = document.getElementById("dropdown-menu");
+
+  // Capturar el rol del usuario
+  const userData = JSON.parse(localStorage.getItem("user"));
+  let userRoleData = userData.role;
+
   let html = "";
   if (
     userRoleData === "premium" &&

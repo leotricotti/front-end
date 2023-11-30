@@ -1,10 +1,8 @@
 // Función que envía los datos al backend
 const forgotPassword = async (username) => {
-  const PORT = localStorage.getItem("port");
-
   try {
     const response = await fetch(
-      `http://localhost:${PORT}/api/users/forgotPassword`,
+      "https://e-store.up.railway.app/api/users/forgotPassword",
       {
         method: "POST",
         headers: {
@@ -54,19 +52,26 @@ const forgotPassword = async (username) => {
   }
 };
 
-// Capturamos el formulario de login
-const loginForm = document.getElementById("login-form");
+// Código que captura los datos del formulario
+document.addEventListener("DOMContentLoaded", () => {
+  // Capturamos el formulario de login
+  const loginForm = document.getElementById("login-form");
 
-// Función que captura los datos y actualiza la contraseña
-loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const username = document.getElementById("username").value;
-  forgotPassword(username);
+  // Función que captura los datos y actualiza la contraseña
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    forgotPassword(username);
+  });
 });
 
-// Spinner
-const restoreBtn = document.getElementById("forgot-button");
+document.addEventListener("DOMContentLoaded", () => {
+  // Spinner
+  const restoreBtn = document.getElementById("forgot-button");
 
-const btnSpinner = () => {
-  restoreBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando...`;
-};
+  const btnSpinner = () => {
+    restoreBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando...`;
+  };
+
+  btnSpinner();
+});

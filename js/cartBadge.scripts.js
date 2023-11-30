@@ -2,14 +2,13 @@
 const cartBadge = async () => {
   const cartId = localStorage.getItem("cartId");
   const cartBadge = document.getElementById("cart-badge");
-  const PORT = localStorage.getItem("port");
 
   try {
     if (!cartId) {
       cartBadge.innerText = "0";
     } else {
       const response = await fetch(
-        `http://localhost:${PORT}/api/carts/${cartId}`,
+        "https://e-store.up.railway.app/api/carts/${cartId}",
         {
           method: "GET",
           headers: {
@@ -35,4 +34,4 @@ const cartBadge = async () => {
   }
 };
 
-cartBadge();
+document.addEventListener("DOMContentLoaded", cartBadge());

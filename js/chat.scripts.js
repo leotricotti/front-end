@@ -1,22 +1,21 @@
-// Puerto del servidor
-const PORT = localStorage.getItem("port");
-
 // Conexión con el servidor y envío de mensajes
-const socket = io(`http://localhost:${PORT}`);
-const chatBox = document.getElementById("textAreaExample");
-const user = JSON.parse(localStorage.getItem("user"));
-const userRole = user.role;
-
-// Agregar un evento de teclado al cuadro de chat
-chatBox.addEventListener("keyup", (e) => {
-  if (e.key === "Enter" && chatBox.value.trim().length > 0) {
-    socket.emit("message", { message: chatBox.value });
-    chatBox.value = "";
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const socket = io("https://e-store.up.railway.app");
+  const chatBox = document.getElementById("textAreaExample");
+  // Agregar un evento de teclado al cuadro de chat
+  chatBox.addEventListener("keyup", (e) => {
+    if (e.key === "Enter" && chatBox.value.trim().length > 0) {
+      socket.emit("message", { message: chatBox.value });
+      chatBox.value = "";
+    }
+  });
 });
 
 // Escuchar los mensajes del servidor de Socket.IO y renderizarlos en el HTML
 socket.on("messageLogs", (data) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userRole = user.role;
+
   const log = document.getElementById("message-logs");
   let message = "";
 
