@@ -37,7 +37,7 @@ async function finishPurchase() {
 
   try {
     const response = await fetch(
-      "https://e-store.up.railway.app/api/carts/${cartId}/purchase",
+      `https://e-store.up.railway.app/api/carts/${cartId}/purchase`,
       {
         method: "POST",
         headers: {
@@ -132,7 +132,7 @@ const increaseQuantity = async (idProduct) => {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    "https://e-store.up.railway.app/api/carts/${cartId}/product/${idProduct}",
+    `https://e-store.up.railway.app/api/carts/${cartId}/product/${idProduct}`,
     {
       method: "POST",
       headers: {
@@ -158,7 +158,7 @@ const decreaseQuantity = async (idProduct) => {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    "https://e-store.up.railway.app/api/carts/${cartId}/product/${idProduct}",
+    `https://e-store.up.railway.app/api/carts/${cartId}/product/${idProduct}`,
     {
       method: "POST",
       headers: {
@@ -199,11 +199,11 @@ const deleteProduct = async (idProduct) => {
   }).then(async (result) => {
     if (result.isConfirmed) {
       const response = await fetch(
-        "https://e-store.up.railway.app/api/carts/${cartId}/product/${idProduct}",
+        `https://e-store.up.railway.app/api/carts/${cartId}/product/${idProduct}`,
         {
           method: "DELETE",
           headers: {
-            "Content-Type": "application/json",
+            "`ontent-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
@@ -245,7 +245,7 @@ const emptyCart = async () => {
   const cartId = localStorage.getItem("cartId");
   const token = localStorage.getItem("token");
 
-  await fetch("https://e-store.up.railway.app/api/carts/${cartId}", {
+  await fetch(`https://e-store.up.railway.app/api/carts/${cartId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -297,7 +297,7 @@ const showCartProducts = async () => {
 
   try {
     const response = await fetch(
-      "https://e-store.up.railway.app/api/carts/populated/${cartId}",
+      `https://e-store.up.railway.app/api/carts/populated/${cartId}`,
       {
         method: "GET",
         headers: {
@@ -428,7 +428,7 @@ const showCartProducts = async () => {
         <nav class="d-flex mb-3 nav-products mt-5 flex-wrap justify-content-center">
           <h3 class="fw-normal text-black mb-2">Aún no hay productos</h3>
           <button class="btn btn-secondary btn-sm" type="button">
-            <a href=""https://e-store.up.railway.app/html/products.html"> Ir a comprar </a>
+            <a href="https://e-store.up.railway.app/html/products.html"> Ir a comprar </a>
           </button>
         </nav>
       `;

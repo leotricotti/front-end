@@ -179,7 +179,7 @@ const sendNewRoleToServer = async (userId, newRoleData) => {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    "https://e-store.up.railway.app/api/users/premium/${userId}",
+    `https://e-store.up.railway.app/api/users/premium/${userId}`,
     {
       method: "PUT",
       headers: {
@@ -232,7 +232,7 @@ const userToDelete = async (userId) => {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    "https://e-store.up.railway.app/api/users/userDelete/${userId}",
+    `https://e-store.up.railway.app/api/users/userDelete/${userId}`,
     {
       method: "DELETE",
       headers: {

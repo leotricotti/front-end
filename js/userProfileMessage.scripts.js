@@ -1,6 +1,3 @@
-// Variables
-const loadUserProfile = [JSON.parse(localStorage.getItem("user"))];
-
 // Función que muestra un mensage si el usuario aún no completó su perfil
 const showIncompleteProfileMessage = () => {
   Swal.fire({
@@ -27,6 +24,7 @@ const showIncompleteProfileMessage = () => {
 
 // Funcion que verifica si el perfil de usuario está completo
 const checkUserProfile = () => {
+  const loadUserProfile = [JSON.parse(localStorage.getItem("user"))];
   if (
     loadUserProfile[0].phone_number === "" ||
     loadUserProfile[0].home_address == "" ||

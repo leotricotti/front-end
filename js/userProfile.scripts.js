@@ -1,7 +1,3 @@
-//Variables globales
-const userProfileForm = document.getElementById("user-profile-form");
-const addDocumentsForm = document.getElementById("add-documents-form");
-
 // Función que captura la información del usuario y la almacena en el local storage
 const getUser = async () => {
   const token = localStorage.getItem("token");
@@ -39,7 +35,6 @@ const getUser = async () => {
 const addUserProfileImage = async (userProfileImage) => {
   const userProfile = [JSON.parse(localStorage.getItem("user"))];
   const token = localStorage.getItem("token");
-  const PORT = localStorage.getItem("port");
   const userId = userProfile[0].email;
   const formData = new FormData();
   formData.append("userProfileImage", userProfileImage);
@@ -79,6 +74,7 @@ const checkUserProfileImage = () => {
 
 // Función que renderiza el perfil del usuario
 function renderUserProfile() {
+  const userProfileForm = document.getElementById("user-profile-form");
   const userProfile = [JSON.parse(localStorage.getItem("user"))];
   let html = "";
 
@@ -292,10 +288,9 @@ userProfileForm.addEventListener("submit", (e) => {
 async function sendProfileData(data) {
   const userProfile = [JSON.parse(localStorage.getItem("user"))];
   const token = localStorage.getItem("token");
-  const PORT = localStorage.getItem("port");
   const userId = userProfile[0].email;
   const response = await fetch(
-    `http://localhost:${PORT}/api/users/userProfile`,
+    "https://e-store.up.railway.app/api/users/userProfile",
     {
       method: "PUT",
       headers: {
@@ -350,6 +345,5 @@ async function sendProfileData(data) {
 
 // Función que redirige al usuario a la página de productos
 const goToProducts = () => {
-  const localPort = localStorage.getItem("localPort");
-  window.location.href = `http://127.0.0.1:${localPort}/html/products.html`;
+  window.location.href = "https://e-store.up.railway.app/html/products.html";
 };
