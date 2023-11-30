@@ -4,7 +4,7 @@ const lastConnection = async () => {
   const username = user.email;
 
   const response = await fetch(
-    "https://e-store.up.railway.app}/api/sessions/lastConnection",
+    "https://e-store.up.railway.app/api/sessions/lastConnection",
     {
       method: "PUT",
       headers: {

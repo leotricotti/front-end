@@ -8,7 +8,7 @@ const cartBadge = async () => {
       cartBadge.innerText = "0";
     } else {
       const response = await fetch(
-        "https://e-store.up.railway.app/api/carts/${cartId}",
+        `https://e-store.up.railway.app/api/carts/${cartId}`,
         {
           method: "GET",
           headers: {
