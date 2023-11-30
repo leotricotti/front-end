@@ -1,19 +1,19 @@
 // Función que redirige al perfil del usuario
 const goToUserProfile = () => {
   window.location.href =
-    "https://e-store.up.railway.app/front-end/html/userProfile.html";
+    "https://leotricotti.github.io/front-end/html/userProfile.html";
 };
 
 // Función que redirige al perfil de todos los usuarios
 const goToAllUsersProfile = () => {
   window.location.href =
-    "https://e-store.up.railway.app/front-end/html/allUsers.html";
+    "https://leotricotti.github.io/front-end/html/allUsers.html";
 };
 
 // Función que redirige a la documentación de la API
 const gotToRealTimeProducts = () => {
   window.location.href =
-    "https://e-store.up.railway.app/front-end/html/realTimeProducts.html";
+    "https://leotricotti.github.io/front-end/html/realTimeProducts.html";
 };
 
 // Función para renderizar el botón de cambio de rol
