@@ -60,7 +60,7 @@ const getUser = async () => {
     }
 
     const url = role === "admin" ? "realTimeProducts.html" : "products.html";
-    window.location.href = `https://e-store.up.railway.app/html/${url}`;
+    window.location.href = `https://leotricotti.github.io/front-end/html/${url}`;
 
     return result;
   } catch (error) {
