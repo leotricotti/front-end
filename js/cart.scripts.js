@@ -289,7 +289,8 @@ const deleteAllProducts = async () => {
 //Direccionar a la pagina de productos anterior
 const continueBuying = () => {
   const page = localStorage.getItem("currentPage");
-  window.location.href = "https://e-store.up.railway.app/html/products.html";
+  window.location.href =
+    "https://leotricotti.github.io/front-end/html/products.html";
 };
 
 const showCartProducts = async () => {
