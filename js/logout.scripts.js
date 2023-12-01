@@ -17,6 +17,10 @@ const lastConnection = async () => {
       }),
     }
   );
+
+  const data = await response.json();
+
+  return data;
 };
 
 //Cerrar sesión
