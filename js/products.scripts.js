@@ -237,10 +237,12 @@ chatClose.addEventListener("click", () => {
 
 // Redirecciona a la página de carritos
 const goToCart = () => {
-  window.location.href = "https://e-store.up.railway.app/html/cart.html";
+  window.location.href =
+    "https://leotricotti.github.io/front-end/html/cart.html";
 };
 
 // Redirecciona a la página de productos
 const goToProducts = () => {
-  window.location.href = "https://e-store.up.railway.app/html/products.html";
+  window.location.href =
+    "https://leotricotti.github.io/front-end/html/products.html";
 };

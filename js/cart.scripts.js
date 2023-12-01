@@ -75,7 +75,8 @@ async function finishPurchase() {
           localStorage.setItem("currentPage", 1);
           localStorage.removeItem("cartId");
           localStorage.removeItem("cart");
-          window.location.href = "../html/orderDetails.html";
+          window.location.href =
+            "https://leotricotti.github.io/front-end/html/orderDetails.html";
         }
       });
     } else {
@@ -461,9 +462,11 @@ chatClose.addEventListener("click", () => {
 
 const localPort = localStorage.getItem("localPort");
 const goToProducts = () => {
-  window.location.href = "https://e-store.up.railway.app/html/products.html";
+  window.location.href =
+    "https://leotricotti.github.io/front-end/html/products.html";
 };
 
 const goToCart = () => {
-  window.location.href = "https://e-store.up.railway.app/html/cart.html";
+  window.location.href =
+    "https://leotricotti.github.io/front-end/html/cart.html";
 };
