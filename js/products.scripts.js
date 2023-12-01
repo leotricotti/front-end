@@ -137,6 +137,7 @@ const getCartId = async () => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
+
     const carts = await response.json();
 
     const lastCart = carts.data[carts.data.length - 1];
@@ -178,7 +179,9 @@ const addCartId = async () => {
   });
 };
 
-addCartId();
+document.addEventListener("DOMContentLoaded", () => {
+  addCartId();
+});
 
 // Agrega productos al carrito
 const addProduct = async (idProduct) => {
