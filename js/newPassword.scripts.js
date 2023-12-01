@@ -13,7 +13,7 @@ const updatePassword = async (newPasswordData, repitPasswordData, token) => {
         popup: "animate__animated animate__zoomOut",
       },
     }).then(() => {
-      window.location.href = "newPassword.html";
+      window.location.href = `https://leotricotti.github.io/front-end/html/newPassword.html${token}`;
     });
   }
   try {
@@ -75,7 +75,8 @@ const updatePassword = async (newPasswordData, repitPasswordData, token) => {
           popup: "animate__animated animate__zoomOut",
         },
       }).then(() => {
-        window.location.href = "index.html";
+        window.location.href =
+          "https://leotricotti.github.io/front-end/index.html";
       });
     }
   } catch (error) {
