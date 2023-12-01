@@ -53,7 +53,8 @@ const logout = () => {
         localStorage.removeItem("user");
         localStorage.setItem("currentPage", 1);
         localStorage.removeItem("usersDeleted");
-        window.location.href = "https://e-store.up.railway.app/index.html";
+        window.location.href =
+          "https://leotricotti.github.io/front-end/index.html";
       }, 2000);
     }
   });
