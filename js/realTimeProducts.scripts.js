@@ -474,9 +474,6 @@ async function updateProductList() {
     const container = document.createElement("div");
     const products = await paginatedProducts();
 
-    showSpinner(products);
-    console.log(products);
-
     products.forEach((product) => {
       const item = document.createElement("div");
       item.classList.add("list-group-item");
