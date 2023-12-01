@@ -28,7 +28,7 @@ const renderDropdownMenu = () => {
   let html = "";
   if (
     userRoleData === "premium" &&
-    window.location.pathname === "/html/realTimeProducts.html"
+    window.location.pathname === "/front-end/html/realTimeProducts.html"
   ) {
     html = `
     <li>
@@ -53,8 +53,7 @@ const renderDropdownMenu = () => {
   `;
   } else if (
     userRoleData === "user" &&
-    window.location.pathname ===
-      "https://leotricotti.github.io/front-end/html/userProfile.html"
+    window.location.pathname === "/front-end/html/userProfile.html"
   ) {
     html = `
     <li>
@@ -73,11 +72,11 @@ const renderDropdownMenu = () => {
   `;
   } else if (
     (userRoleData === "premium" &&
-      window.location.pathname === "/html/products.html") ||
+      window.location.pathname === "/front-end/html/products.html") ||
     (userRoleData === "premium" &&
-      window.location.pathname === "/html/cart.html") ||
+      window.location.pathname === "/front-end/html/cart.html") ||
     (userRoleData === "premium" &&
-      window.location.pathname === "/html/userProfile.html")
+      window.location.pathname === "/front-end/html/userProfile.html")
   ) {
     html = `
     <li>
@@ -102,7 +101,7 @@ const renderDropdownMenu = () => {
   `;
   } else if (
     userRoleData === "admin" &&
-    window.location.pathname === "/html/realTimeProducts.html"
+    window.location.pathname === "/front-end/html/realTimeProducts.html"
   ) {
     html = `
     <li>
@@ -125,7 +124,7 @@ const renderDropdownMenu = () => {
   `;
   } else if (
     userRoleData === "admin" &&
-    window.location.pathname === "/html/allUsers.html"
+    window.location.pathname === "/front-end/html/allUsers.html"
   ) {
     html = `
     <li>
