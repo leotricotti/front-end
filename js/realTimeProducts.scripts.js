@@ -432,15 +432,8 @@ const getProducts = async () => {
   }
 };
 
-const paginatedProducts = async (page) => {
-  const products = await getProducts();
-  const reverseProducts = products.products.reverse();
-  const productsPaginated = reverseProducts.slice(0, page * 10);
-  return productsPaginated;
-};
-
 // Función para agregar productos
-const addProductBtn = (page) => {
+const addProductBtn = () => {
   const btnAddProduct = document.getElementById("add-product-btn");
   if (page === 4) {
     btnAddProduct.classList.add("disabled");
@@ -448,6 +441,14 @@ const addProductBtn = (page) => {
     page++;
   }
   updateProductList();
+};
+
+// Funcion para mostrar los productos
+const paginatedProducts = async () => {
+  const products = await getProducts();
+  const reverseProducts = products.products.reverse();
+  const productsPaginated = reverseProducts.slice(0, page * 10);
+  return productsPaginated;
 };
 
 // Función que define que imagen mostrar en el producto
@@ -471,7 +472,10 @@ async function updateProductList() {
   productList.innerHTML = "";
   try {
     const container = document.createElement("div");
-    const products = await paginatedProducts(page);
+    const products = await paginatedProducts();
+
+    showSpinner(products);
+    console.log(products);
 
     products.forEach((product) => {
       const item = document.createElement("div");
