@@ -1,10 +1,8 @@
 // Variables globales
-document.addEventListener("DOMContentLoaded", () => {
-  let page = 1;
-  let counter = 0;
-  let fileCounter = 0;
-  const formData = new FormData();
-});
+let page = 1;
+let counter = 0;
+let fileCounter = 0;
+const formData = new FormData();
 
 // Codigo que desabilita el chat para los administradores
 document.addEventListener("DOMContentLoaded", () => {
@@ -396,7 +394,7 @@ async function handleSubmit(e) {
   updateProductList();
 }
 
-const getProducts = async (page) => {
+const getProducts = async () => {
   try {
     const result = await fetch(
       "https://e-store.up.railway.app/api/realTimeProducts",
@@ -434,7 +432,7 @@ const getProducts = async (page) => {
   }
 };
 
-const paginatedProducts = async (pages) => {
+const paginatedProducts = async (page) => {
   const products = await getProducts();
   const reverseProducts = products.products.reverse();
   const productsPaginated = reverseProducts.slice(0, page * 10);
@@ -442,7 +440,7 @@ const paginatedProducts = async (pages) => {
 };
 
 // Función para agregar productos
-const addProductBtn = () => {
+const addProductBtn = (page) => {
   const btnAddProduct = document.getElementById("add-product-btn");
   if (page === 4) {
     btnAddProduct.classList.add("disabled");
@@ -454,7 +452,6 @@ const addProductBtn = () => {
 
 // Función que define que imagen mostrar en el producto
 const renderProductImage = (product) => {
-  const PORT = localStorage.getItem("port");
   const imageUrl = product.thumbnail[0]?.img1;
   if (
     imageUrl ===
