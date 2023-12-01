@@ -30,8 +30,7 @@ const forgotPassword = async (username) => {
         },
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href =
-            "https://leotricotti.github.io/front-end/index.html";
+          window.location.href = "https://leotricotti.github.io/index.html";
         }
       });
     } else {
