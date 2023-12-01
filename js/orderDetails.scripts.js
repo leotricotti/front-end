@@ -84,5 +84,5 @@ orderDetails();
 
 document.getElementById("order-detail-btn").addEventListener("click", () => {
   localStorage.removeItem("order");
-  window.location.href = "index.html";
+  window.location.href = "https://leotricotti.github.io/front-end/index.html";
 });
