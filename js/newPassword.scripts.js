@@ -1,8 +1,5 @@
 // Funcion que actualiza la contraseña del usuario
 const updatePassword = async (newPasswordData, repitPasswordData, token) => {
-  const PORT = localStorage.getItem("port");
-  const localPort = localStorage.getItem("localPort");
-
   if (newPasswordData !== repitPasswordData) {
     Swal.fire({
       icon: "error",
@@ -21,7 +18,7 @@ const updatePassword = async (newPasswordData, repitPasswordData, token) => {
   }
   try {
     const response = await fetch(
-      (url = `http://localhost:${PORT}/api/users/updatePassword/${token}`),
+      (url = `https://e-store.up.railway.app/api/users/updatePassword/${token}`),
       {
         method: "PUT",
         headers: {
@@ -63,7 +60,7 @@ const updatePassword = async (newPasswordData, repitPasswordData, token) => {
           popup: "animate__animated animate__zoomOut",
         },
       }).then(() => {
-        window.location.href = `http://127.0.0.1:${localPort}/html/newPassword.html?token=${token}`;
+        window.location.href = `https://leotricotti.github.io/front-end/html/newPassword.html${token}`;
       });
     } else {
       Swal.fire({
