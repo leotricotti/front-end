@@ -9,18 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
       chatBox.value = "";
     }
   });
-});
 
-// Escuchar los mensajes del servidor de Socket.IO y renderizarlos en el HTML
-socket.on("messageLogs", (data) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userRole = user.role;
+  // Escuchar los mensajes del servidor de Socket.IO y renderizarlos en el HTML
+  socket.on("messageLogs", (data) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const userRole = user.role;
 
-  const log = document.getElementById("message-logs");
-  let message = "";
+    const log = document.getElementById("message-logs");
+    let message = "";
 
-  data.forEach((elem) => {
-    message += `
+    data.forEach((elem) => {
+      message += `
       <div class="d-flex flex-row justify-content-end mb-4">
         <div class="rounded-circle" style="border-radius: 15px; background-color: #fbfbfb">
           <p class="small mb-0">${elem.mensaje}</p>
@@ -34,11 +33,12 @@ socket.on("messageLogs", (data) => {
         </div>
       </div>
     `;
-  });
+    });
 
-  if (userRole === "admin") {
-    log.innerHTML = "";
-  } else {
-    log.innerHTML = message;
-  }
+    if (userRole === "admin") {
+      log.innerHTML = "";
+    } else {
+      log.innerHTML = message;
+    }
+  });
 });
