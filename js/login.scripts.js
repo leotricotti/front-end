@@ -22,6 +22,7 @@ const createCart = async () => {
     if (localStorage.getItem("cartId")) {
       return;
     }
+
     const response = await fetch("https://e-store.up.railway.app/api/carts", {
       method: "POST",
       headers: {
@@ -32,6 +33,7 @@ const createCart = async () => {
         products: [],
       }),
     });
+
     const result = await response.json();
   } catch (error) {
     console.log(error);

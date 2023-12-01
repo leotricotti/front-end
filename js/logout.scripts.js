@@ -57,6 +57,7 @@ const logout = () => {
         localStorage.removeItem("user");
         localStorage.setItem("currentPage", 1);
         localStorage.removeItem("usersDeleted");
+        localStorage.removeItem("cart");
         window.location.href =
           "https://leotricotti.github.io/front-end/index.html";
       }, 2000);
