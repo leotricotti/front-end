@@ -72,6 +72,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnSpinner = () => {
     restoreBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Cargando...`;
   };
-
-  btnSpinner();
 });
