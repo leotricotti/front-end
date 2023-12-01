@@ -53,7 +53,8 @@ const renderDropdownMenu = () => {
   `;
   } else if (
     userRoleData === "user" &&
-    window.location.pathname === "/html/userProfile.html"
+    window.location.pathname ===
+      "https://leotricotti.github.io/front-end/html/userProfile.html"
   ) {
     html = `
     <li>
