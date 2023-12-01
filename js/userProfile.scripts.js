@@ -1,7 +1,6 @@
 // Función que captura la información del usuario y la almacena en el local storage
 const getUser = async () => {
   const token = localStorage.getItem("token");
-  const PORT = localStorage.getItem("port");
   try {
     const response = await fetch(
       "https://e-store.up.railway.app/api/users/current",
@@ -30,6 +29,10 @@ const getUser = async () => {
     console.log(error);
   }
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  getUser();
+});
 
 // Función que personaliza la imagen de usuario
 const addUserProfileImage = async (userProfileImage) => {
@@ -239,48 +242,47 @@ function renderUserProfile() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  getUser();
-});
-
 // Función que completa el perfil del usuario
-userProfileForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const userProfileForm = document.getElementById("user-profile-form");
+  userProfileForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  const first_name = document.getElementById("first_name").value;
-  const last_name = document.getElementById("last_name").value;
-  const phone_number = document.getElementById("phone_number").value;
-  const home_address = document.getElementById("home_address").value;
-  const city = document.getElementById("city").value;
-  const state = document.getElementById("state").value;
-  const zip_code = document.getElementById("zip_code").value;
+    const first_name = document.getElementById("first_name").value;
+    const last_name = document.getElementById("last_name").value;
+    const phone_number = document.getElementById("phone_number").value;
+    const home_address = document.getElementById("home_address").value;
+    const city = document.getElementById("city").value;
+    const state = document.getElementById("state").value;
+    const zip_code = document.getElementById("zip_code").value;
 
-  const userData = {
-    first_name,
-    last_name,
-    phone_number,
-    home_address,
-    city,
-    state,
-    zip_code,
-  };
+    const userData = {
+      first_name,
+      last_name,
+      phone_number,
+      home_address,
+      city,
+      state,
+      zip_code,
+    };
 
-  Swal.fire({
-    icon: "question",
-    title: "¿Confirma los cambios?",
-    text: "Si desea puede modificar sus datos más tarde.",
-    confirmButtonText: "Aceptar",
-    confirmButtonColor: "#3085d6",
-    showClass: {
-      popup: "animate__animated animate__zoomIn",
-    },
-    hideClass: {
-      popup: "animate__animated animate__zoomOut",
-    },
-  }).then((result) => {
-    if (result.isConfirmed) {
-      sendProfileData(userData);
-    }
+    Swal.fire({
+      icon: "question",
+      title: "¿Confirma los cambios?",
+      text: "Si desea puede modificar sus datos más tarde.",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "#3085d6",
+      showClass: {
+        popup: "animate__animated animate__zoomIn",
+      },
+      hideClass: {
+        popup: "animate__animated animate__zoomOut",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        sendProfileData(userData);
+      }
+    });
   });
 });
 
