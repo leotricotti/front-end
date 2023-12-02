@@ -346,5 +346,6 @@ async function sendProfileData(data) {
 
 // Función que redirige al usuario a la página de productos
 const goToProducts = () => {
-  window.location.href = "https://e-store.up.railway.app/html/products.html";
+  window.location.href =
+    "https://leotricotti.github.io/front-end/html/products.html";
 };
