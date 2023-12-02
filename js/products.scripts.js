@@ -122,8 +122,10 @@ const productsHandler = async (handler, index) => {
 //Guardar cartId en localStorage
 const saveCartId = (cartId) => {
   const localId = localStorage.getItem("cartId");
+  const user = JSON.parse(localStorage.getItem("user"));
+  const email = user.email;
   if (!localId) {
-    localStorage.setItem("cartId", cartId);
+    localStorage.setItem("cartId", { cartId, email });
   }
 };
 
