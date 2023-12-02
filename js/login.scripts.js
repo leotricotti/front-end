@@ -33,6 +33,8 @@ const getCartsIds = async () => {
   }
 };
 
+getCartsIds();
+
 // Crea un carrito vacío en la base de datos
 const createCart = async () => {
   try {
