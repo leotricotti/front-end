@@ -125,8 +125,6 @@ async function handleUpdateProduct(
   stock,
   category
 ) {
-  const PORT = localStorage.getItem("port");
-
   try {
     const updateProduct = {
       title: title,
@@ -196,7 +194,6 @@ async function handleUpdateProduct(
 //Codigo los datos del producto y los muestre en el formulario
 const getProductToUpdate = async (id) => {
   const updateProductForm = document.getElementById("update-product-container");
-  const PORT = localStorage.getItem("port");
 
   const response = await fetch(
     `"https://e-store.up.railway.app/api/realTimeProducts/${id}`,
@@ -301,7 +298,6 @@ async function handleSubmit(e) {
   e.preventDefault();
 
   let owner = "";
-  const PORT = localStorage.getItem("port");
   const userLocalData = JSON.parse(localStorage.getItem("user"));
   const userName = userLocalData.email;
   const userRole = userLocalData.role;

@@ -18,7 +18,6 @@ function addProdutAndCloseDetails(id) {
 
 const showDetailedInfo = async (id) => {
   const token = localStorage.getItem("token");
-  const PORT = localStorage.getItem("port");
 
   try {
     const response = await fetch(

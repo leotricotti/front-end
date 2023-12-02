@@ -461,7 +461,6 @@ chatClose.addEventListener("click", () => {
   chatContainer.classList.remove("active");
 });
 
-const localPort = localStorage.getItem("localPort");
 const goToProducts = () => {
   window.location.href =
     "https://leotricotti.github.io/front-end/html/products.html";

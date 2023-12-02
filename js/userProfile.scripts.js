@@ -59,7 +59,6 @@ const addUserProfileImage = async (userProfileImage) => {
 
 // Función que compruba si el usuario subió una imagen de perfil
 const checkUserProfileImage = () => {
-  const PORT = localStorage.getItem("port");
   const userProfile = [JSON.parse(localStorage.getItem("user"))];
   const userImage = userProfile[0].documents.filter(
     (document) => document.name === "userProfileImage"
@@ -69,7 +68,7 @@ const checkUserProfileImage = () => {
     const referenceParts = userImage[0].reference.split("/");
     const finalReference =
       "/profiles/" + referenceParts[referenceParts.length - 1];
-    return `<img class="rounded-circle mt-5" width="150px" height="150px" style="object-fit: contain" src="http://localhost:${PORT}${finalReference}" />`;
+    return `<img class="rounded-circle mt-5" width="150px" height="150px" style="object-fit: contain" src="https://e-store.up.railway.app${finalReference}" />`;
   } else {
     return `<img class="rounded-circle mt-5" width="150px" height="150px" src="../img/user-avatar.png" />`;
   }
