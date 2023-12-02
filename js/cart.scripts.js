@@ -429,7 +429,7 @@ const showCartProducts = async () => {
         <nav class="d-flex mb-3 nav-products mt-5 flex-wrap justify-content-center">
           <h3 class="fw-normal text-black mb-2">Aún no hay productos</h3>
           <button class="btn btn-secondary btn-sm" type="button">
-            <a href="https://e-store.up.railway.app/html/products.html"> Ir a comprar </a>
+            <a href="https://leotricotti.github.io/front-end/html/products.html"> Ir a comprar </a>
           </button>
         </nav>
       `;
