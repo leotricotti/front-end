@@ -75,14 +75,14 @@ const getUser = async () => {
       localStorage.setItem("user", JSON.stringify(result.data));
     }
 
-    if (
-      role === "admin"
-        ? (window.location.href =
-            "https://leotricotti.github.io/front-end/html/realTimeProducts.html")
-        : (window.location.href =
-            "https://leotricotti.github.io/front-end/html/products.html")
-    )
-      return result;
+    // if (
+    //   role === "admin"
+    //     ? (window.location.href =
+    //         "https://leotricotti.github.io/front-end/html/realTimeProducts.html")
+    //     : (window.location.href =
+    //         "https://leotricotti.github.io/front-end/html/products.html")
+    // )
+    return result;
   } catch (error) {
     console.log(error);
   }
