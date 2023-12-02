@@ -16,26 +16,12 @@ const lastConnection = async (username) => {
   );
 };
 
-const getCartsIds = async () => {
-  try {
-    const response = await fetch("https://e-store.up.railway.app/api/carts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-
-    const carts = await response.json();
-    console.log(carts);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 // Crea un carrito vacío en la base de datos
 const createCart = async () => {
   try {
+    if (localStorage.getItem("cartId")) {
+      return;
+    }
     const response = await fetch("https://e-store.up.railway.app/api/carts", {
       method: "POST",
       headers: {
@@ -46,7 +32,6 @@ const createCart = async () => {
         products: [],
       }),
     });
-
     const result = await response.json();
   } catch (error) {
     console.log(error);
@@ -73,14 +58,14 @@ const getUser = async () => {
       localStorage.setItem("user", JSON.stringify(result.data));
     }
 
-    // if (
-    //   role === "admin"
-    //     ? (window.location.href =
-    //         "https://leotricotti.github.io/front-end/html/realTimeProducts.html")
-    //     : (window.location.href =
-    //         "https://leotricotti.github.io/front-end/html/products.html")
-    // )
-    return result;
+    if (
+      role === "admin"
+        ? (window.location.href =
+            "https://leotricotti.github.io/front-end/html/realTimeProducts.html")
+        : (window.location.href =
+            "https://leotricotti.github.io/front-end/html/products.html")
+    )
+      return result;
   } catch (error) {
     console.log(error);
   }
@@ -132,7 +117,6 @@ const postLogin = async (username, password) => {
       lastConnection(username);
       createCart();
       getUser();
-      getCartsIds();
     }
 
     return result;
