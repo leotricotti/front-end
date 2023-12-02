@@ -48,6 +48,7 @@ const productsHandler = async (handler, index) => {
         .join("");
 
       const discountedPrice = calculateDiscountedPrice(product.price);
+      const randomUsers = Math.floor(Math.random() * 100);
 
       return `
       <div class="col-md-12 col-xl-10 margin">
@@ -66,7 +67,7 @@ const productsHandler = async (handler, index) => {
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                   </div>
-                  <span> 310 </span>
+                  <span> ${randomUsers} </span>
                 </div>
                 <div class="mt-1 mb-0 text-muted small">
                   <span>
