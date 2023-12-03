@@ -367,6 +367,8 @@ async function handleSubmit(e) {
 
     const result = await response.json();
 
+    console.log(result);
+
     if (result.message !== "Producto creado con éxito") {
       return Swal.fire({
         icon: "error",
