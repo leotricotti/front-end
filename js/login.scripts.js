@@ -1,19 +1,22 @@
+const serverUrl = "https://entregafinal-coderhouse.up.railway.app";
+const frontUrl = "https://https://leotricotti.github.io";
+
+localStorage.setItem("serverUrl", JSON.stringify(serverUrl));
+localStorage.setItem("frontUrl", JSON.stringify(frontUrl));
+
 // Última conexión
 const lastConnection = async (username) => {
-  const response = await fetch(
-    "https://e-store.up.railway.app/api/sessions/lastConnection",
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({
-        username: username,
-        action: "login",
-      }),
-    }
-  );
+  const response = await fetch(`${serverUrl}/api/sessions/lastConnection`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({
+      username: username,
+      action: "login",
+    }),
+  });
 };
 
 // Crea un carrito vacío en la base de datos
@@ -22,7 +25,7 @@ const createCart = async () => {
     if (localStorage.getItem("cartId")) {
       return;
     }
-    const response = await fetch("https://e-store.up.railway.app/api/carts", {
+    const response = await fetch(`${serverUrl}/api/carts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,16 +44,13 @@ const createCart = async () => {
 // Función que captura la información del usuario y la almacena en el local storage
 const getUser = async () => {
   try {
-    const response = await fetch(
-      "https://e-store.up.railway.app/api/users/current",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const response = await fetch(`${serverUrl}/api/users/current`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
     const result = await response.json();
     const role = result.data.role;
@@ -60,10 +60,8 @@ const getUser = async () => {
 
     if (
       role === "admin"
-        ? (window.location.href =
-            "https://leotricotti.github.io/front-end/html/realTimeProducts.html")
-        : (window.location.href =
-            "https://leotricotti.github.io/front-end/html/products.html")
+        ? (window.location.href = `${frontUrl}/front-end/html/realTimeProducts.html`)
+        : (window.location.href = `${frontUrl}/front-end/html/products.html`)
     )
       return result;
   } catch (error) {
@@ -86,16 +84,13 @@ loginForm.addEventListener("submit", (event) => {
 // Función para enviar los datos de inicio de sesión al servidor
 const postLogin = async (username, password) => {
   try {
-    const response = await fetch(
-      "https://e-store.up.railway.app/api/sessions/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }
-    );
+    const response = await fetch(`${serverUrl}/api/sessions/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
     const result = await response.json();
     localStorage.setItem("token", result.token);
@@ -127,7 +122,7 @@ const postLogin = async (username, password) => {
 
 // Login con GitHub
 const githubLogin = async () => {
-  window.location.href = "https://e-store.up.railway.app/api/sessions/github";
+  window.location.href = `${serverUrl}/api/sessions/github`;
 };
 
 // Spinner de carga

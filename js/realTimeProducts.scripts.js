@@ -343,12 +343,6 @@ async function handleSubmit(e) {
 
     formData.append("newProduct", JSON.stringify(product));
 
-    // Convierte el objeto FormData a un objeto JSON
-    const jsonData = {};
-    formData.forEach((value, key) => {
-      jsonData[key] = value;
-    });
-
     // Imprime la información en la consola del navegador
     console.log("Datos del formulario:", jsonData);
 
@@ -363,11 +357,7 @@ async function handleSubmit(e) {
       }
     );
 
-    console.log(response);
-
     const result = await response.json();
-
-    console.log(result);
 
     if (result.message !== "Producto creado con éxito") {
       return Swal.fire({
