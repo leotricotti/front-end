@@ -343,9 +343,6 @@ async function handleSubmit(e) {
 
     formData.append("newProduct", JSON.stringify(product));
 
-    // Imprime la información en la consola del navegador
-    console.log("Datos del formulario:", jsonData);
-
     const response = await fetch(
       "https://e-store.up.railway.app/api/realTimeProducts",
       {
