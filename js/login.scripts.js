@@ -1,8 +1,8 @@
 const serverUrl = "https://entregafinal-coderhouse.up.railway.app";
 const frontUrl = "https://https://leotricotti.github.io";
 
-localStorage.setItem("serverUrl", JSON.stringify(serverUrl));
-localStorage.setItem("frontUrl", JSON.stringify(frontUrl));
+localStorage.setItem("serverUrl", serverUrl);
+localStorage.setItem("frontUrl", frontUrl);
 
 // Última conexión
 const lastConnection = async (username) => {

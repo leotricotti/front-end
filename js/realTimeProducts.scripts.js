@@ -1,5 +1,5 @@
 // Variables globales
-const serverUrl = localStorage.getItem(JSON.parse("serverUrl"));
+const serverUrl = localStorage.getItem("serverUrl");
 let page = 1;
 let counter = 0;
 let fileCounter = 0;
