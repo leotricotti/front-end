@@ -196,7 +196,7 @@ const getProductToUpdate = async (id) => {
   const updateProductForm = document.getElementById("update-product-container");
 
   const response = await fetch(
-    `"https://e-store.up.railway.app/api/realTimeProducts/${id}`,
+    `https://e-store.up.railway.app/api/realTimeProducts/${id}`,
     {
       method: "GET",
       headers: {
