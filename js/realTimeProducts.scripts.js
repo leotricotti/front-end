@@ -207,7 +207,6 @@ const getProductToUpdate = async (id) => {
   );
 
   const result = await response.json();
-  console.log(result);
 
   const product = result.product;
 
@@ -343,6 +342,8 @@ async function handleSubmit(e) {
     };
 
     formData.append("newProduct", JSON.stringify(product));
+
+    console.log(formData);
 
     const response = await fetch(
       "https://e-store.up.railway.app/api/realTimeProducts",
