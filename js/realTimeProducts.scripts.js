@@ -340,7 +340,9 @@ async function handleSubmit(e) {
       category: category.value,
       owner: owner,
     };
+
     formData.append("newProduct", JSON.stringify(product));
+
     const response = await fetch(
       "https://e-store.up.railway.app/api/realTimeProducts",
       {
@@ -352,8 +354,9 @@ async function handleSubmit(e) {
       }
     );
 
+    console.log(response);
+
     const result = await response.json();
-    console.log(result);
 
     if (result.message !== "Producto creado con éxito") {
       return Swal.fire({
