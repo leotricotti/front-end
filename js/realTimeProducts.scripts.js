@@ -354,8 +354,6 @@ async function handleSubmit(e) {
       }
     );
 
-    console.log(response);
-
     const result = await response.json();
 
     if (result.message !== "Producto creado con éxito") {
