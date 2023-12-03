@@ -1,5 +1,4 @@
 // Variables globales
-const serverUrl = localStorage.getItem("serverUrl");
 let page = 1;
 let counter = 0;
 let fileCounter = 0;
@@ -136,14 +135,17 @@ async function handleUpdateProduct(
       category: category,
     };
 
-    const response = await fetch(`${serverUrl}/api/realTimeProducts/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(updateProduct),
-    });
+    const response = await fetch(
+      `https://e-store.up.railway.app/api/realTimeProducts/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(updateProduct),
+      }
+    );
 
     const result = await response.json();
 
@@ -193,13 +195,16 @@ async function handleUpdateProduct(
 const getProductToUpdate = async (id) => {
   const updateProductForm = document.getElementById("update-product-container");
 
-  const response = await fetch(`${serverUrl}/api/realTimeProducts/${id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
+  const response = await fetch(
+    `https://e-store.up.railway.app/api/realTimeProducts/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }
+  );
 
   const result = await response.json();
 
@@ -341,13 +346,18 @@ async function handleSubmit(e) {
     // Imprime la información en la consola del navegador
     console.log("Datos del formulario:", jsonData);
 
-    const response = await fetch(`${serverUrl}/api/realTimeProducts`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: formData,
-    });
+    const response = await fetch(
+      "https://e-store.up.railway.app/api/realTimeProducts",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+      }
+    );
+
+    console.log(response);
 
     const result = await response.json();
 
@@ -389,13 +399,16 @@ async function handleSubmit(e) {
 
 const getProducts = async () => {
   try {
-    const result = await fetch(`${serverUrl}/api/realTimeProducts`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const result = await fetch(
+      "https://e-store.up.railway.app/api/realTimeProducts",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
     if (result.status === 404) {
       return Swal.fire({
@@ -451,7 +464,7 @@ const renderProductImage = (product) => {
     return `<img src="${imageUrl}" alt="img" width="150" class="thumbnail position-absolute me-5 end-0 top-0" style="margin-top:120px">`;
   } else {
     const finalUrl = product.thumbnail[0]?.img1.split("public");
-    return `<img src="${serverUrl}${finalUrl[1]}" alt="img" width="150" class="thumbnail position-absolute me-5 end-0 top-0" style="margin-top:120px">`;
+    return `<img src=""https://e-store.up.railway.app${finalUrl[1]}" alt="img" width="150" class="thumbnail position-absolute me-5 end-0 top-0" style="margin-top:120px">`;
   }
 };
 
@@ -549,13 +562,16 @@ function eliminarProducto(id) {
     },
   }).then(async (result) => {
     if (result.isConfirmed) {
-      const response = await fetch(`${serverUrl}/api/realTimeProducts/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        `https://e-store.up.railway.app/api/realTimeProducts/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       const resulted = await response.json();
 
