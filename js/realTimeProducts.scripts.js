@@ -207,6 +207,7 @@ const getProductToUpdate = async (id) => {
   );
 
   const result = await response.json();
+  console.log(result);
 
   const product = result.product;
 
