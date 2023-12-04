@@ -64,15 +64,7 @@ const form = document.getElementById("add-product-form");
 form.addEventListener("submit", handleSubmit);
 
 // Función para manejar el envío del formulario de actualizar producto
-async function handleUpdateProduct(
-  id,
-  title,
-  description,
-  code,
-  price,
-  stock,
-  category
-) {
+async function handleUpdateProduct(id, title, description, code, price, stock) {
   try {
     const updateProduct = {
       title: title,
@@ -250,14 +242,14 @@ async function handleSubmit(e) {
   const userName = userLocalData.email;
   const userRole = userLocalData.role;
 
-  const { title, description, code, price, stock, category } = form.elements;
+  const { title, description, code, price, stock } = form.elements;
   if (
     !title.value ||
     !description.value ||
     !code.value ||
     !price.value ||
     !stock.value ||
-    !category.value
+    !category
   ) {
     return Swal.fire({
       icon: "error",
