@@ -4,6 +4,12 @@ const goToUserProfile = () => {
     "https://leotricotti.github.io/front-end/html/userProfile.html";
 };
 
+// Función que redirige al usuario a la página de productos
+const goToProducts = () => {
+  window.location.href =
+    "https://leotricotti.github.io/front-end/html/products.html";
+};
+
 // Función que redirige al perfil de todos los usuarios
 const goToAllUsersProfile = () => {
   window.location.href =
@@ -71,12 +77,35 @@ const renderDropdownMenu = () => {
     </li>
   `;
   } else if (
+    userRoleData === "premium" &&
+    window.location.pathname === "/front-end/html/userProfile.html"
+  ) {
+    html = `
+    <li>
+      <button class="btn dropdown-item" onclick="goToProducts()">
+      <i class="fa-brands fa-product-hunt"></i>
+        Products Page
+      </button>
+    </li>
+      <li>
+      <a href="realTimeProducts.html" class="btn dropdown-item">
+      <i class="fa-solid fa-sliders"></i>
+        Admin Panel
+      </a>
+    </li>
+    <div class="dropdown-divider"></div>
+    <li>
+    <button class="btn dropdown-item" onclick="logout()">
+        <i class="fas fa-sign-out-alt fa-fw"></i>
+        Cerrar sesión
+      </button>
+    </li>
+  `;
+  } else if (
     (userRoleData === "premium" &&
       window.location.pathname === "/front-end/html/products.html") ||
     (userRoleData === "premium" &&
-      window.location.pathname === "/front-end/html/cart.html") ||
-    (userRoleData === "premium" &&
-      window.location.pathname === "/front-end/html/userProfile.html")
+      window.location.pathname === "/front-end/html/cart.html")
   ) {
     html = `
     <li>
