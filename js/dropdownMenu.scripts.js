@@ -4,12 +4,6 @@ const goToUserProfile = () => {
     "https://leotricotti.github.io/front-end/html/userProfile.html";
 };
 
-// Función que redirige al usuario a la página de productos
-const goToProducts = () => {
-  window.location.href =
-    "https://leotricotti.github.io/front-end/html/products.html";
-};
-
 // Función que redirige al perfil de todos los usuarios
 const goToAllUsersProfile = () => {
   window.location.href =
