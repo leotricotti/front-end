@@ -1,11 +1,25 @@
 // Variables globales
 let page = 1;
+let category = "";
 
 // Codigo que desabilita el chat para los administradores
 document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(localStorage.getItem("user"));
   if (user.role === "admin") {
     document.getElementById("chat-section").classList.add("d-none");
+  }
+});
+
+// Codigo que captura los datos de la categoria elegida para el nuevo producto
+const seletcElement = document.getElementById("form-select");
+select.addEventListener("change", (e) => {
+  const selectedValue = e.target.value;
+  if (selectedValue === 1) {
+    category = "Audio";
+  } else if (selectedValue === 2) {
+    category = "Electronics";
+  } else {
+    category = "Hogar";
   }
 });
 
@@ -211,7 +225,7 @@ const getProductToUpdate = async (id) => {
   const updateProductData = document.getElementById("update-product-form");
   updateProductData.addEventListener("submit", (e) => {
     e.preventDefault();
-    const { title, description, code, price, stock, category } =
+    const { title, description, code, price, stock } =
       updateProductData.elements;
     handleUpdateProduct(
       product._id,
@@ -220,7 +234,7 @@ const getProductToUpdate = async (id) => {
       code.value,
       price.value,
       stock.value,
-      category.value
+      category
     );
   });
 
