@@ -514,40 +514,40 @@ function deleteProduct(id) {
       const resulted = await response.json();
       console.log(resulted);
 
-      // if (resulted.message !== "Producto eliminado con éxito") {
-      //   return Swal.fire({
-      //     icon: "error",
-      //     title: "Oops...",
-      //     text: "Algo salió mal! Vuelve a intentarlo",
-      //     showConfirmButton: true,
-      //     confirmButtonText: "Aceptar",
-      //     showClass: {
-      //       popup: "animate__animated animate__zoomIn",
-      //     },
-      //     hideClass: {
-      //       popup: "animate__animated animate__zoomOut",
-      //     },
-      //   });
-      // } else {
-      //   Swal.fire({
-      //     title: "¡Producto eliminado con éxito!",
-      //     icon: "success",
-      //     confirmButtonColor: "#3085d6",
-      //     confirmButtonText: "Aceptar",
-      //     showClass: {
-      //       popup: "animate__animated animate__zoomIn",
-      //     },
-      //     hideClass: {
-      //       popup: "animate__animated animate__zoomOut",
-      //     },
-      //   }).then((result) => {
-      //     if (result.isConfirmed) {
-      //       setTimeout(function () {
-      //         window.location.reload();
-      //       }, 500);
-      //     }
-      //   });
-      // }
+      if (resulted.message !== "Producto eliminado con éxito") {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Algo salió mal! Vuelve a intentarlo",
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar",
+          showClass: {
+            popup: "animate__animated animate__zoomIn",
+          },
+          hideClass: {
+            popup: "animate__animated animate__zoomOut",
+          },
+        });
+      } else {
+        Swal.fire({
+          title: "¡Producto eliminado con éxito!",
+          icon: "success",
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "Aceptar",
+          showClass: {
+            popup: "animate__animated animate__zoomIn",
+          },
+          hideClass: {
+            popup: "animate__animated animate__zoomOut",
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            setTimeout(function () {
+              window.location.reload();
+            }, 500);
+          }
+        });
+      }
     }
   });
 }

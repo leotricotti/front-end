@@ -204,7 +204,7 @@ const deleteProduct = async (idProduct) => {
         {
           method: "DELETE",
           headers: {
-            "`ontent-Type": "application/json",
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
