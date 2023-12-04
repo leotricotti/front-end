@@ -14,14 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
 const selectElement = document.getElementById("form-select");
 selectElement.addEventListener("change", (e) => {
   const selectedValue = e.target.value;
-  if (selectedValue === 1) {
+  if (selectedValue === "1") {
     category = "Audio";
-  } else if (selectedValue === 2) {
+  } else if (selectedValue === "2") {
     category = "Electronics";
   } else {
     category = "Hogar";
   }
 });
+
+console.log(category);
 
 // Funcíon que genera codigos de productos aleatorios
 function generateProductCode() {
