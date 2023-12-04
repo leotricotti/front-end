@@ -210,6 +210,10 @@ const deleteProduct = async (idProduct) => {
         }
       );
 
+      const result = await response.json();
+
+      console.log(result);
+
       if (!response.ok) {
         return Swal.fire({
           icon: "error",
