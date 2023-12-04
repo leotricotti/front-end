@@ -350,7 +350,7 @@ async function handleSubmit(e) {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: formData,
+        // body: formData,
       }
     );
 
