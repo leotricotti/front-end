@@ -440,7 +440,7 @@ async function updateProductList() {
 
       const btnEliminar = item.querySelector(".delete-product-btn");
       btnEliminar.addEventListener("click", () => {
-        eliminarProducto(product._id);
+        deleteProduct(product._id);
       });
 
       container.appendChild(item);
@@ -485,7 +485,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Eliminar un producto de la lista de productos
-function eliminarProducto(id) {
+function deleteProduct(id) {
   Swal.fire({
     title: "¿Estás seguro?",
     text: "No podrás revertir esta acción!",
@@ -512,6 +512,7 @@ function eliminarProducto(id) {
       );
 
       const resulted = await response.json();
+      console.log(resulted);
 
       if (resulted.message !== "Producto eliminado con éxito") {
         return Swal.fire({
