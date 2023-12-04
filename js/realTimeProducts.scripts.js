@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Codigo que captura los datos de la categoria elegida para el nuevo producto
-const seletcElement = document.getElementById("form-select");
-select.addEventListener("change", (e) => {
+const selectElement = document.getElementById("form-select");
+selectElement.addEventListener("change", (e) => {
   const selectedValue = e.target.value;
   if (selectedValue === 1) {
     category = "Audio";
