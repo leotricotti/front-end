@@ -1,8 +1,5 @@
 // Variables globales
 let page = 1;
-let counter = 0;
-let fileCounter = 0;
-const formData = new FormData();
 
 // Codigo que desabilita el chat para los administradores
 document.addEventListener("DOMContentLoaded", () => {
@@ -51,69 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // Obtener el formulario de agregar producto
 const form = document.getElementById("add-product-form");
 form.addEventListener("submit", handleSubmit);
-
-// Función que maneja la carga de la imagen del producto
-async function manageProductImage() {
-  const files = document.getElementById("thumbnail").files;
-  const linkContainer = document.getElementById("link-container");
-
-  if (formData.has("userProductImage")) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Ya has cargado un archivo. No puedes cargar más.",
-      showConfirmButton: true,
-      confirmButtonText: "Aceptar",
-      showClass: {
-        popup: "animate__animated animate__zoomIn",
-      },
-      hideClass: {
-        popup: "animate__animated animate__zoomOut",
-      },
-    });
-    document.getElementById("thumbnail").value = "";
-    return;
-  }
-
-  const file = files[0];
-  formData.append("userProductImage", file);
-
-  // Crear un enlace y una imagen para el archivo subido
-  const url = URL.createObjectURL(file);
-  const link = document.createElement("a");
-  link.target = "_blank";
-  link.classList.add("link");
-  link.href = url;
-  link.textContent = "Ver imagen";
-  linkContainer.appendChild(link);
-
-  // Restablecer el mensaje del input de archivo a su valor original
-  document.getElementById("thumbnail").value = "";
-}
-
-// Codigo que dispare el evento change del input de archivo
-const userProductImage = document.getElementById("thumbnail");
-userProductImage.addEventListener("change", function (e) {
-  if (fileCounter < 1) {
-    manageProductImage();
-    fileCounter++;
-    this.value = "";
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Solo puedes subir 1 imagenes!",
-      showConfirmButton: true,
-      confirmButtonText: "Aceptar",
-      showClass: {
-        popup: "animate__animated animate__zoomIn",
-      },
-      hideClass: {
-        popup: "animate__animated animate__zoomOut",
-      },
-    });
-  }
-});
 
 // Función para manejar el envío del formulario de actualizar producto
 async function handleUpdateProduct(
@@ -341,16 +275,15 @@ async function handleSubmit(e) {
       owner: owner,
     };
 
-    formData.append("newProduct", JSON.stringify(product));
-
     const response = await fetch(
       "https://e-store.up.railway.app/api/realTimeProducts",
       {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        // body: formData,
+        body: JSON.stringify(product),
       }
     );
 
