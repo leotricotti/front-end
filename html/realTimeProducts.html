@@ -131,12 +131,12 @@
           </div>
           <div class="mb-3">
             <label for="category" class="form-label"> Categoría: </label>
-            <input
-              type="text"
-              class="form-control"
-              id="category"
-              placeholder="Ingrese la categoria del producto..."
-            />
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Seleccione la categoría del producto</option>
+              <option value="1">Audio</option>
+              <option value="2">Electronica</option>
+              <option value="3">Hogar</option>
+            </select>
           </div>
           <button type="submit" class="btn btn-primary" id="submit">
             Crear producto
