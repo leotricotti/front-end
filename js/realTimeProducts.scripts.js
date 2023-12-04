@@ -16,13 +16,10 @@ selectElement.addEventListener("change", (e) => {
   const selectedValue = e.target.value;
   if (selectedValue === "1") {
     category = "Audio";
-    return;
   } else if (selectedValue === "2") {
     category = "Electronics";
-    return console.log(category);
   } else {
     category = "Hogar";
-    return console.log(category);
   }
 });
 
@@ -68,7 +65,6 @@ form.addEventListener("submit", handleSubmit);
 
 // Función para manejar el envío del formulario de actualizar producto
 async function handleUpdateProduct(id, title, description, code, price, stock) {
-  console.log(category);
   try {
     const updateProduct = {
       title: title,
@@ -512,7 +508,6 @@ function deleteProduct(id) {
       );
 
       const resulted = await response.json();
-      console.log(resulted);
 
       if (resulted.message !== "Producto eliminado con éxito") {
         return Swal.fire({
