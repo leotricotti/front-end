@@ -281,7 +281,7 @@ async function handleSubmit(e) {
       code: code.value,
       price: price.value,
       stock: stock.value,
-      category: category.value,
+      category: category,
       owner: owner,
     };
 
