@@ -16,14 +16,15 @@ selectElement.addEventListener("change", (e) => {
   const selectedValue = e.target.value;
   if (selectedValue === "1") {
     category = "Audio";
+    return console.log(category);
   } else if (selectedValue === "2") {
     category = "Electronics";
+    return console.log(category);
   } else {
     category = "Hogar";
+    return console.log(category);
   }
 });
-
-console.log(category);
 
 // Funcíon que genera codigos de productos aleatorios
 function generateProductCode() {
