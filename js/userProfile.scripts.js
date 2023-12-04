@@ -322,6 +322,7 @@ async function sendProfileData(data) {
     }).then((resulted) => {
       if (resulted.isConfirmed) {
         localStorage.setItem("user", JSON.stringify(result.data));
+        renderDropdownMenu();
         window.location.reload();
       }
     });
