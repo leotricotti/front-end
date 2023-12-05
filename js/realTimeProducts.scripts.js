@@ -508,6 +508,7 @@ function deleteProduct(id) {
       );
 
       const resulted = await response.json();
+      console.log(resulted);
 
       if (resulted.message !== "Producto eliminado con éxito") {
         return Swal.fire({
