@@ -225,8 +225,6 @@ const deleteProduct = async (idProduct) => {
         });
       }
 
-      showCartProducts();
-
       Swal.fire({
         icon: "success",
         title: "Producto eliminado con exito!",
@@ -238,6 +236,10 @@ const deleteProduct = async (idProduct) => {
         hideClass: {
           popup: "animate__animated animate__zoomOut",
         },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.reload();
+        }
       });
     }
   });
