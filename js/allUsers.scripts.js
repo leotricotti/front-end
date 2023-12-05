@@ -342,6 +342,8 @@ const deleteUsers = async () => {
 
   const result = await response.json();
 
+  console.log(result);
+
   if (result.data?.length > 0) {
     localStorage.setItem("usersDeleted", result.data.length);
   }
