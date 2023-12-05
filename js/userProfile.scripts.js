@@ -34,46 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   getUser();
 });
 
-// Función que personaliza la imagen de usuario
-const addUserProfileImage = async (userProfileImage) => {
-  const userProfile = [JSON.parse(localStorage.getItem("user"))];
-  const token = localStorage.getItem("token");
-  const userId = userProfile[0].email;
-  const formData = new FormData();
-  formData.append("userProfileImage", userProfileImage);
-
-  const response = await fetch(
-    `https://e-store.up.railway.app/api/users/${userId}/documents`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    }
-  );
-
-  const result = await response.json();
-  return result;
-};
-
-// Función que compruba si el usuario subió una imagen de perfil
-const checkUserProfileImage = () => {
-  const userProfile = [JSON.parse(localStorage.getItem("user"))];
-  const userImage = userProfile[0].documents.filter(
-    (document) => document.name === "userProfileImage"
-  );
-
-  if (userImage.length > 0) {
-    const referenceParts = userImage[0].reference.split("/");
-    const finalReference =
-      "/profiles/" + referenceParts[referenceParts.length - 1];
-    return `<img class="rounded-circle mt-5" width="150px" height="150px" style="object-fit: contain" src="https://e-store.up.railway.app${finalReference}" />`;
-  } else {
-    return `<img class="rounded-circle mt-5" width="150px" height="150px" src="../img/user-avatar.png" />`;
-  }
-};
-
 // Función que renderiza el perfil del usuario
 function renderUserProfile() {
   const userProfileForm = document.getElementById("user-profile-form");
@@ -87,26 +47,9 @@ function renderUserProfile() {
           <div class="col-md-4 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
               <div class="position-relative">
-                ${checkUserProfileImage()}
-                <button
-                  type="button"
-                  class="btn position-absolute"
-                  style="
-                    background-color: #eee;
-                    border-radius: 50%;
-                    bottom: 10px;
-                    right: 20px;
-                  "
-                  id="user-profile-image"
-                  onclick="${addUserProfileImage()}"
-                >
-                  <input type="file" class="form-control d-none" />
-                  <i class="fas fa-camera"></i>
-                </button>
+                <img class="rounded-circle mt-5" width="150px" height="150px" src="../img/user-avatar.png" />
               </div>
-              <span class="font-weight-bold">${user.first_name} ${
-        user.last_name
-      }</span>
+              <span class="font-weight-bold">${user.first_name} ${user.last_name}</span>
               <span class="text-black-50">${user.email}</span>
               <div id="link-container"></div>
             </div>
@@ -115,19 +58,15 @@ function renderUserProfile() {
             <div class="p-3 py-5">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h4 class="text-right">Perfil</h4>
-              </div>
+                >        </div>
               <div class="row mt-2">
                 <div class="col-md-6">
                   <label class="labels" for='first_name'>Nombre</label>
-                  <input type="text" class="form-control" value=${
-                    user.first_name
-                  } id='first_name' autocomplete="off" required/>
+                  <input type="text" class="form-control" value=${user.first_name} id='first_name' autocomplete="off" required/>
                 </div>
                 <div class="col-md-6">
                   <label class="labels" for="last_name">Apellido</label>
-                  <input type="text" class="form-control" value=${
-                    user.last_name
-                  } id="last_name" autocomplete="off" required/>
+                  <input type="text" class="form-control" value=${user.last_name} id="last_name" autocomplete="off" required/>
                 </div>
               </div>
               <div class="row mt-3">
@@ -209,36 +148,6 @@ function renderUserProfile() {
   `;
 
   userProfileForm.innerHTML = html;
-
-  // Agrega el evento de click después de renderizar el HTML
-  const button = document.getElementById("user-profile-image");
-  if (button) {
-    button.addEventListener("click", () => {
-      const fileInput = document.createElement("input");
-      fileInput.type = "file";
-      fileInput.accept = "image/*"; // Solo acepta archivos de imagen
-      fileInput.style.display = "none";
-      document.body.appendChild(fileInput);
-
-      fileInput.addEventListener("change", () => {
-        const file = fileInput.files[0];
-
-        // Crear un enlace y una imagen para el archivo subido
-        const linkContainer = document.getElementById("link-container");
-        const url = URL.createObjectURL(file);
-        const link = document.createElement("a");
-        link.target = "_blank";
-        link.classList.add("link");
-        link.href = url;
-        link.textContent = "Ver imagen";
-        linkContainer.appendChild(link);
-
-        addUserProfileImage(file);
-      });
-
-      fileInput.click();
-    });
-  }
 }
 
 // Función que completa el perfil del usuario
