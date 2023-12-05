@@ -238,7 +238,7 @@ const deleteProduct = async (idProduct) => {
         },
       }).then((result) => {
         if (result.isConfirmed) {
-          window.reload();
+          window.location.reload();
         }
       });
     }
