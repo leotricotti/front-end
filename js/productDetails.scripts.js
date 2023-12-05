@@ -83,7 +83,7 @@ const showDetailedInfo = async (id) => {
         <div class="bottom-wrap d-flex justify-content-between "> <button
         onclick="addProdutAndCloseDetails('${
           product._id
-        }')" class="btn-product-details  btn-primary float-right">Comprar</button>
+        }')" class="btn-product-details  btn-primary float-right">Agregar al carrito</button>
             <div class="price-wrap"> <button onclick=toggleDetailsProducts() class="btn-product-details  btn-warning link-dark float-left" data-abc="true">Cerrar</button> </div>
         </div>
     </figure>
